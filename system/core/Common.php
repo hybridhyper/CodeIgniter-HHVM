@@ -30,34 +30,6 @@
 // ------------------------------------------------------------------------
 
 /**
-* Determines if the current version of PHP is greater then the supplied value
-*
-* Since there are a few places where we conditionally test for PHP > 5
-* we'll set a static variable.
-*
-* @access	public
-* @param	string
-* @return	bool	TRUE if the current version is $version or higher
-*/
-if ( ! function_exists('is_php'))
-{
-	function is_php($version = '5.0.0')
-	{
-		static $_is_php;
-		$version = (string)$version;
-
-		if ( ! isset($_is_php[$version]))
-		{
-			$_is_php[$version] = (version_compare(PHP_VERSION, $version) < 0) ? FALSE : TRUE;
-		}
-
-		return $_is_php[$version];
-	}
-}
-
-// ------------------------------------------------------------------------
-
-/**
  * Tests for file writability
  *
  * is_writable() returns TRUE on Windows servers when you really can't write to
@@ -71,35 +43,7 @@ if ( ! function_exists('is_really_writable'))
 {
 	function is_really_writable($file)
 	{
-		// If we're on a Unix server with safe_mode off we call is_writable
-		if (DIRECTORY_SEPARATOR == '/' AND @ini_get("safe_mode") == FALSE)
-		{
-			return is_writable($file);
-		}
-
-		// For windows servers and safe_mode "on" installations we'll actually
-		// write a file then read it.  Bah...
-		if (is_dir($file))
-		{
-			$file = rtrim($file, '/').'/'.md5(mt_rand(1,100).mt_rand(1,100));
-
-			if (($fp = @fopen($file, FOPEN_WRITE_CREATE)) === FALSE)
-			{
-				return FALSE;
-			}
-
-			fclose($fp);
-			@chmod($file, DIR_WRITE_MODE);
-			@unlink($file);
-			return TRUE;
-		}
-		elseif ( ! is_file($file) OR ($fp = @fopen($file, FOPEN_WRITE_CREATE)) === FALSE)
-		{
-			return FALSE;
-		}
-
-		fclose($fp);
-		return TRUE;
+		return is_writable($file);
 	}
 }
 

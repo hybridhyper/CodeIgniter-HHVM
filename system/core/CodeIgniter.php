@@ -71,11 +71,6 @@
  */
 	set_error_handler('_exception_handler');
 
-	if ( ! is_php('5.3'))
-	{
-		@set_magic_quotes_runtime(0); // Kill magic quotes
-	}
-
 /*
  * ------------------------------------------------------
  *  Set the subclass_prefix
@@ -99,29 +94,12 @@
 
 /*
  * ------------------------------------------------------
- *  Set a liberal script execution time limit
- * ------------------------------------------------------
- */
-	if (function_exists("set_time_limit") == TRUE AND @ini_get("safe_mode") == 0)
-	{
-		@set_time_limit(300);
-	}
-
-/*
- * ------------------------------------------------------
  *  Start the timer... tick tock tick tock...
  * ------------------------------------------------------
  */
 	$BM =& load_class('Benchmark', 'core');
 	$BM->mark('total_execution_time_start');
 	$BM->mark('loading_time:_base_classes_start');
-
-/*
- * ------------------------------------------------------
- *  Instantiate the hooks class
- * ------------------------------------------------------
- */
-	$EXT =& load_class('Hooks', 'core');
 
 /*
  * ------------------------------------------------------
@@ -237,14 +215,6 @@
 	if (file_exists(APPPATH.'core/'.$CFG->config['subclass_prefix'].'Controller.php'))
 	{
 		require APPPATH.'core/'.$CFG->config['subclass_prefix'].'Controller.php';
-	}
-
-	// Load the local application controller
-	// Note: The Router class automatically validates the controller path using the router->_validate_request().
-	// If this include fails it means that the default controller in the Routes.php file is not resolving to something valid.
-	if ( ! file_exists(APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->fetch_class().'.php'))
-	{
-		show_error('Unable to load your default controller. Please make sure the controller specified in your Routes.php file is valid.');
 	}
 
 	include(APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->fetch_class().'.php');
