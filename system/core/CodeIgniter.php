@@ -299,6 +299,8 @@
 	// Mark a benchmark end point
 	$BM->mark('controller_execution_time_( '.$class.' / '.$method.' )_end');
 
+	$OUT->_display();
+
 /*
  * ------------------------------------------------------
  *  Close the DB connection if one exists

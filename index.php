@@ -46,6 +46,9 @@ if (defined('ENVIRONMENT'))
 	}
 }
 
+// TODO: Make this configurable
+date_default_timezone_set('UTC');
+
 /*
  *---------------------------------------------------------------
  * SYSTEM FOLDER NAME
