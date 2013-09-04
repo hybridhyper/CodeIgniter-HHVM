@@ -34,13 +34,11 @@ if (defined('ENVIRONMENT'))
 	{
 		case 'development':
 			error_reporting(E_ALL);
-		break;
-	
+			break;
 		case 'testing':
 		case 'production':
 			error_reporting(0);
-		break;
-
+			break;
 		default:
 			exit('The application environment is not set correctly.');
 	}
@@ -59,7 +57,7 @@ date_default_timezone_set('UTC');
  * as this file.
  *
  */
-	$system_path = 'system';
+	$system_path = '../system';
 
 /*
  *---------------------------------------------------------------
@@ -75,7 +73,7 @@ date_default_timezone_set('UTC');
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = 'system/application';
+	$application_folder = '../application';
 
 /*
  * --------------------------------------------------------------------
