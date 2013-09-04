@@ -27,27 +27,36 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * PDO Utility Class
+ * PDO ODBC Forge Class
  *
  * @category	Database
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/database/
  */
-class CI_DB_pdo_utility extends CI_DB_utility {
+class CI_DB_pdo_odbc_forge extends CI_DB_pdo_forge {
 
 	/**
-	 * Export
+	 * UNSIGNED support
 	 *
-	 * @param	array	$params	Preferences
-	 * @return	mixed
+	 * @var	bool|array
 	 */
-	protected function _backup($params = array())
+	protected $_unsigned		= FALSE;
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Field attribute AUTO_INCREMENT
+	 *
+	 * @param	array	&$attributes
+	 * @param	array	&$field
+	 * @return	void
+	 */
+	protected function _attr_auto_increment(&$attributes, &$field)
 	{
-		// Currently unsupported
-		return $this->db->display_error('db_unsupported_feature');
+		// Not supported (in most databases at least)
 	}
 
 }
 
-/* End of file pdo_utility.php */
-/* Location: ./system/database/drivers/pdo/pdo_utility.php */
+/* End of file pdo_odbc_forge.php */
+/* Location: ./system/database/drivers/pdo/subdrivers/pdo_odbc_forge.php */
