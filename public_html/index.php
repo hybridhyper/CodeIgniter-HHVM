@@ -170,6 +170,9 @@ date_default_timezone_set('UTC');
 	// Name of the "system folder"
 	define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
 
+	// Path to the application folder
+	define('APPPATH', BASEPATH.$application_folder.'/');
+
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
