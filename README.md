@@ -4,7 +4,7 @@ This is my personal modified version of CodeIgniter for use with HipHop VM (HHVM
 
 ## Requirements
 - PHP 5.4+ or HHVM 2.0+
-- Nginx (recommended)
+- Nginx (recommended) or other HTTP server
 
 ## Sample Nginx Config
 ```
