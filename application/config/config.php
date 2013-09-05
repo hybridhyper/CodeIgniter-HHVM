@@ -37,14 +37,16 @@ $config['index_page'] = 'index.php';
 | URI string.  The default setting of 'AUTO' works for most servers.
 | If your links do not seem to work, try one of the other delicious flavors:
 |
-| 'AUTO'			Default - auto detects
-| 'PATH_INFO'		Uses the PATH_INFO
-| 'QUERY_STRING'	Uses the QUERY_STRING
-| 'REQUEST_URI'		Uses the REQUEST_URI
-| 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
+| 'HTTP_REQUEST_URI'	Default - use with sample Nginx config and HHVM
+|						If using Nginx with PHP-FPM, select 'REQUEST_URI'
+| 'AUTO'				Original - auto detects
+| 'PATH_INFO'			Uses the PATH_INFO
+| 'QUERY_STRING'		Uses the QUERY_STRING
+| 'REQUEST_URI'			Uses the REQUEST_URI
+| 'ORIG_PATH_INFO'		Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= 'AUTO';
+$config['uri_protocol']	= 'HTTP_REQUEST_URI';
 
 /*
 |--------------------------------------------------------------------------
