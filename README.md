@@ -20,3 +20,17 @@ This is my personal modified version of CodeIgniter for use with HipHop VM (HHVM
         proxy_pass http://localhost:8000;
     }
 ```
+
+## Sample HHVM Config
+```
+Server {
+    Port = 8000
+    IP = 127.0.0.1
+ 
+    DefaultDocument = index.php
+    ErrorDocument404 = index.php
+ 
+    [...]
+ 
+}
+```
