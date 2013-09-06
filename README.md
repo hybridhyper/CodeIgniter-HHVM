@@ -15,7 +15,7 @@ This is my personal modified version of CodeIgniter for use with HipHop VM (HHVM
     proxy_redirect off;
     location ~ /index.php$ {
         proxy_set_header REQUEST_URI $request_uri;
-        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X_FORWARDED_FOR $remote_addr;
         proxy_set_header Host my.domain.com;
         proxy_pass http://localhost:8000;
     }
